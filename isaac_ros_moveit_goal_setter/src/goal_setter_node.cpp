@@ -28,9 +28,9 @@ namespace manipulation
 GoalSetterNode::GoalSetterNode(std::string name, const rclcpp::NodeOptions & options)
 : node_{std::make_shared<rclcpp::Node>(name, options)},
   planner_group_name_(node_->declare_parameter<std::string>(
-      "planner_group_name", "ur_manipulator")),
+      "planner_group_name", "manipulator")),
   planner_id_(node_->declare_parameter<std::string>("planner_id", "cuMotion")),
-  end_effector_link_(node_->declare_parameter<std::string>("end_effector_link", "wrist_3_link")),
+  end_effector_link_(node_->declare_parameter<std::string>("end_effector_link", "tool_frame")),
   move_group_interface_{moveit::planning_interface::MoveGroupInterface(node_, planner_group_name_)}
 {
   set_target_pose_service_ =

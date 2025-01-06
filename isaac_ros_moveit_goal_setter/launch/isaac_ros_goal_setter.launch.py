@@ -21,41 +21,31 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.parameter_descriptions import ParameterValue
+
 
 
 def get_robot_description():
-    ur_type = LaunchConfiguration('ur_type')
     robot_ip = LaunchConfiguration('robot_ip')
+    arm = LaunchConfiguration('arm', default='gen3')
+    dof = LaunchConfiguration('dof', default='7')
+    gripper = LaunchConfiguration('gripper', default='robotiq_2f_85')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    joint_limit_params = PathJoinSubstitution(
-        [FindPackageShare('ur_description'), 'config', ur_type, 'joint_limits.yaml']
-    )
-    kinematics_params = PathJoinSubstitution(
-        [FindPackageShare('ur_description'), 'config', ur_type, 'default_kinematics.yaml']
-    )
-    physical_params = PathJoinSubstitution(
-        [FindPackageShare('ur_description'), 'config', ur_type, 'physical_parameters.yaml']
-    )
-    visual_params = PathJoinSubstitution(
-        [FindPackageShare('ur_description'), 'config', ur_type, 'visual_parameters.yaml']
-    )
+
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')]), ' ',
-            PathJoinSubstitution([FindPackageShare('ur_description'), 'urdf', 'ur.urdf.xacro']),
+            PathJoinSubstitution([FindPackageShare('kortex_description'), 'robots', 'gen3.xacro']),
             ' ', 'robot_ip:=', robot_ip,
-            ' ', 'joint_limit_params:=', joint_limit_params,
-            ' ', 'kinematics_params:=', kinematics_params,
-            ' ', 'physical_params:=', physical_params,
-            ' ', 'visual_params:=', visual_params,
-            ' ', 'safety_limits:=true',
-            ' ', 'safety_pos_margin:=0.15',
-            ' ', 'safety_k_position:=20',
-            ' ', 'name:=ur', ' ', 'ur_type:=', ur_type, ' ', 'prefix:=''',
+            ' ', 'arm:=', arm,
+            ' ', 'dof:=', dof,
+            ' ', 'gripper:=', gripper,
+            ' ', 'use_sim_time:=', use_sim_time,
         ]
     )
 
-    robot_description = {'robot_description': robot_description_content}
+    robot_description = {'robot_description': ParameterValue(robot_description_content, value_type=str)}
     return robot_description
 
 
@@ -64,12 +54,12 @@ def get_robot_description_semantic():
     robot_description_semantic_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')]), ' ',
-            PathJoinSubstitution([FindPackageShare('ur_moveit_config'), 'srdf', 'ur.srdf.xacro']),
-            ' ', 'name:=ur', ' ', 'prefix:=""',
+            PathJoinSubstitution([FindPackageShare('kinova_gen3_7dof_robotiq_2f_85_moveit_config'), 'config', 'gen3.srdf']),
+            ' ', 'name:=gen3', ' ', 'prefix:=""',
         ]
     )
     robot_description_semantic = {
-        'robot_description_semantic': robot_description_semantic_content
+        'robot_description_semantic': ParameterValue(robot_description_semantic_content, value_type=str)
     }
     return robot_description_semantic
 
@@ -77,20 +67,36 @@ def get_robot_description_semantic():
 def generate_launch_description():
     launch_args = [
         DeclareLaunchArgument(
-            'ur_type',
-            description='Type/series of used UR robot.',
-            choices=['ur3', 'ur3e', 'ur5', 'ur5e', 'ur10', 'ur10e', 'ur16e', 'ur20'],
-            default_value='ur5e',
-        ),
-        DeclareLaunchArgument(
             'robot_ip',
             description='IP address of the robot',
-            default_value='192.56.1.2',
+            default_value='192.168.1.10',
         ),
+        DeclareLaunchArgument(
+            'arm',
+            default_value='gen3',
+            description='Type of Kinova arm',
+        ),
+        DeclareLaunchArgument(
+            'dof',
+            default_value='7',
+            description='Number of degrees of freedom',
+        ),
+        DeclareLaunchArgument(
+            'gripper',
+            default_value='robotiq_2f_85',
+            description='Type of gripper',
+        ),
+        DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='false',
+            description='Use simulation time',
+        ),
+
+
 
     ]
     moveit_kinematics_params = PathJoinSubstitution(
-        [FindPackageShare('ur_moveit_config'), 'config', 'default_kinematics.yaml']
+        [FindPackageShare('kinova_gen3_7dof_robotiq_2f_85_moveit_config'), 'config', 'kinematics_cumotion.yaml']
     )
     robot_description = get_robot_description()
     robot_description_semantic = get_robot_description_semantic()
@@ -102,7 +108,8 @@ def generate_launch_description():
         parameters=[
             robot_description,
             robot_description_semantic,
-            moveit_kinematics_params
+            moveit_kinematics_params,
+            {'use_sim_time': LaunchConfiguration('use_sim_time')}
         ],
     )
 
