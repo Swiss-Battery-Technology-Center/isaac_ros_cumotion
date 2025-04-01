@@ -46,7 +46,7 @@ class CumotionRobotSegmenter(Node):
 
     def __init__(self):
         super().__init__('cumotion_robot_segmentation')
-        self.declare_parameter('robot', 'ur5e.yml')
+        self.declare_parameter('robot', 'kinova_gen3.yml')
         self.declare_parameter('urdf_path', rclpy.Parameter.Type.STRING)
         self.declare_parameter('yml_file_path', rclpy.Parameter.Type.STRING)
         self.declare_parameter('cuda_device', 0)

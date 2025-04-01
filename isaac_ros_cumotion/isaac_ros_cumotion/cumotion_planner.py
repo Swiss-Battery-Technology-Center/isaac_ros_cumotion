@@ -59,7 +59,7 @@ class CumotionActionServer(Node):
     def __init__(self):
         super().__init__('cumotion_action_server')
         self.tensor_args = TensorDeviceType()
-        self.declare_parameter('robot', 'ur5e.yml')
+        self.declare_parameter('robot', 'kinova_gen3.yml')
         self.declare_parameter('urdf_path', rclpy.Parameter.Type.STRING)
         self.declare_parameter('yml_file_path', rclpy.Parameter.Type.STRING)
         self.declare_parameter('time_dilation_factor', 0.5)

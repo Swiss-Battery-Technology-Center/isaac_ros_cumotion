@@ -46,7 +46,7 @@ class PoseToPoseNode(Node):
             'plan_timer_period', 0.01).get_parameter_value().double_value
 
         planner_group_name = self.declare_parameter(
-            'planner_group_name', 'ur_manipulator').get_parameter_value().string_value
+            'planner_group_name', 'manipulator').get_parameter_value().string_value
 
         pipeline_id = self.declare_parameter(
             'pipeline_id', 'isaac_ros_cumotion').get_parameter_value().string_value
@@ -55,7 +55,7 @@ class PoseToPoseNode(Node):
             'planner_id', 'cuMotion').get_parameter_value().string_value
 
         ee_link = self.declare_parameter(
-            'end_effector_link', 'wrist_3_link').get_parameter_value().string_value
+            'end_effector_link', 'end_effector_link').get_parameter_value().string_value
 
         self.move_group_client = MoveGroupClient(
             self, planner_group_name, pipeline_id, planner_id, ee_link)

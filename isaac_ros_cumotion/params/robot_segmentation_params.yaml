@@ -1,8 +1,8 @@
 /**:
   ros__parameters:
-    robot:  ur5e.yml
-    urdf_path: ""
-    yml_file_path: ""
+    robot:  kinova_gen3.yml
+    urdf_path: "/workspaces/cumotion/isaac_ros_cumotion/curobo_core/curobo/src/curobo/content/assets/robot/kinova/kinova_gen3_7dof.urdf"
+    yml_file_path: "/workspaces/cumotion/isaac_ros_cumotion/curobo_core/curobo/src/curobo/content/configs/robot/kinova_gen3.yml"
     depth_qos: 'DEFAULT'
     depth_info_qos: 'DEFAULT'
     mask_qos: 'DEFAULT'

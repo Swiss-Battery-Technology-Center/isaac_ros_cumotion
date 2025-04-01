@@ -41,6 +41,7 @@ setup(
     entry_points={
         'console_scripts': [
             'pose_to_pose_node = isaac_ros_moveit_goal_setter.pose_to_pose:main',
+            'home_node = isaac_ros_moveit_goal_setter.home:main',
             'goal_initializer_node = isaac_ros_moveit_goal_setter.goal_initializer:main'
         ],
     },
