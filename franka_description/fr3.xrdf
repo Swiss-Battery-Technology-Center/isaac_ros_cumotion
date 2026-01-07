@@ -1,0 +1,193 @@
+format: "xrdf"
+format_version: 1.0
+
+kinematics:
+  base_link: base
+  ee_link: tool_frame
+  link_names:
+    - "base"
+    - "fr3_link0"
+    - "fr3_link1"
+    - "fr3_link2"
+    - "fr3_link3"
+    - "fr3_link4"
+    - "fr3_link5"
+    - "fr3_link6"
+    - "fr3_link7"
+    - "fr3_link8"
+    - "fr3_hand"
+    - "tool_frame"
+    - "fr3_leftfinger" 
+    - "fr3_rightfinger"
+
+  collision_link_names:
+    - "fr3_link0"
+    - "fr3_link1"
+    - "fr3_link2"
+    - "fr3_link3"
+    - "fr3_link4"
+    - "fr3_link5"
+    - "fr3_link6"
+    - "fr3_link7"
+    - "fr3_link8"
+    - "fr3_hand"
+    - "fr3_leftfinger"
+    - "fr3_rightfinger"
+
+  mesh_link_names: 
+    - "fr3_link0"
+    - "fr3_link1"
+    - "fr3_link2"
+    - "fr3_link3"
+    - "fr3_link4"
+    - "fr3_link5"
+    - "fr3_link6"
+    - "fr3_link7"
+    - "fr3_link8"
+    - "fr3_hand"
+    - "fr3_leftfinger"
+    - "fr3_rightfinger"
+
+tool_frames: ["tool_frame"]
+
+default_joint_positions:
+  fr3_joint1:   -0.0005
+  fr3_joint2:   -0.016
+  fr3_joint3:    0.0003
+  fr3_joint4:   -0.0858
+  fr3_joint5:   -0.0013
+  fr3_joint6:    0.1349
+  fr3_joint7:    0.1697
+  fr3_finger_joint1: 0.0003
+  fr3_finger_joint2: 0.0182
+
+cspace:
+  joint_names:
+    - "fr3_joint1"
+    - "fr3_joint2"
+    - "fr3_joint3"
+    - "fr3_joint4"
+    - "fr3_joint5"
+    - "fr3_joint6"
+    - "fr3_joint7"
+  acceleration_limits: [10,    10,    10,    10,    10,    10,    10   ]
+  jerk_limits:         [10000, 10000, 10000, 10000, 10000, 10000, 10000]
+
+collision:
+  geometry: "auto_generated_collision_sphere_group"
+
+self_collision:
+  geometry: "auto_generated_collision_sphere_group"
+  ignore:
+    base_link:
+      - "fr3_link1"
+    fr3_link1:
+      - "fr3_link2"
+    fr3_link2:
+      - "fr3_link3"
+    fr3_link3:
+      - "fr3_link4"
+    fr3_link4:
+      - "fr3_link5"
+    fr3_link5:
+      - "fr3_link6"
+    fr3_link6:
+      - "fr3_link7"
+    fr3_link7:
+      - "fr3_leftfinger"
+      - "fr3_rightfinger"
+      - "fr3_hand" 
+    fr3_leftfinger:
+      - "fr3_rightfinger"
+      - "fr3_hand"
+    fr3_link8:
+      - "fr3_hand"
+    fr3_hand:
+      - "fr3_link8"
+      - "fr3_link7"
+      - "fr3_leftfinger"
+      - "fr3_rightfinger"
+      - "tool_frame"
+
+
+geometry:
+  auto_generated_collision_sphere_group:
+    spheres:
+      fr3_link1:
+        - center: [ 0.000, -0.029, -0.040 ]
+          radius: 0.0644
+        - center: [ 0.001, -0.012, -0.130 ]
+          radius: 0.0644
+        - center: [ 0.000, -0.073,  0.000 ]
+          radius: 0.0618
+      fr3_link2:
+        - center: [ 0.000, -0.002,  0.057 ]
+          radius: 0.0694
+        - center: [ 0.001, -0.135,  0.006 ]
+          radius: 0.0656
+        - center: [ 0.001, -0.031,  0.051 ]
+          radius: 0.0643
+      fr3_link3:
+        - center: [ 0.045,  0.026, -0.039 ]
+          radius: 0.0730
+        - center: [ 0.082,  0.046,  0.000 ]
+          radius: 0.0682
+        - center: [-0.002,  0.001, -0.072 ]
+          radius: 0.0640
+      fr3_link4:
+        - center: [-0.033,  0.034,  0.030 ]
+          radius: 0.0734
+        - center: [-0.082,  0.072,  0.000 ]
+          radius: 0.0655
+        - center: [ 0.000,  0.000,  0.054 ]
+          radius: 0.0673
+      fr3_link5:
+        - center: [ 0.000,  0.069,  0.000 ]
+          radius: 0.0594
+        - center: [ 0.001,  0.019, -0.210 ]
+          radius: 0.0572
+        - center: [-0.003, -0.010, -0.219 ]
+          radius: 0.0513
+        - center: [-0.005,  0.056, -0.180 ]
+          radius: 0.0432
+        - center: [ 0.001,  0.085,  0.006 ]
+          radius: 0.0565
+        - center: [ 0.006,  0.087, -0.100 ]
+          radius: 0.0299
+        - center: [-0.004,  0.079, -0.138 ]
+          radius: 0.0307
+        - center: [-0.006,  0.093, -0.065 ]
+          radius: 0.0299
+      fr3_link6:
+        - center: [ 0.037, -0.007,  0.011 ]
+          radius: 0.0548
+        - center: [ 0.089, -0.002, -0.001 ]
+          radius: 0.0548
+        - center: [ 0.074,  0.037,  0.003 ]
+          radius: 0.0529
+      fr3_leftfinger:
+        - center: [-0.005,  0.018,  0.026 ]
+          radius: 0.0229
+        - center: [ 0.000,  0.022,  0.007 ]
+          radius: 0.0229
+        - center: [ 0.005,  0.021,  0.020 ]
+          radius: 0.0229
+      fr3_rightfinger:
+        - center: [-0.004, -0.022,  0.020 ]
+          radius: 0.0179
+        - center: [ 0.000, -0.022,  0.007 ]
+          radius: 0.0179
+        - center: [ 0.000, -0.014,  0.031 ]
+          radius: 0.0179
+      fr3_link7:
+        - center: [ 0.039,  0.038,  0.084 ]
+          radius: 0.0400
+        - center: [ 0.009,  0.001,  0.132 ]
+          radius: 0.0400
+        - center: [ 0.052,  0.048,  0.142 ]
+          radius: 0.0400
+        - center: [-0.044, -0.052,  0.139 ]
+          radius: 0.0400
+      fr3_hand: 
+        - center: [0.038, 0.009, 0.15]
+          radius: 0.1

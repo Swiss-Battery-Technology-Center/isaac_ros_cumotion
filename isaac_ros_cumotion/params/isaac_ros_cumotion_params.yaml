@@ -1,8 +1,8 @@
 /**:
   ros__parameters:
-    robot: "kinova_gen3.yml"
-    urdf_path: "/workspaces/cumotion/isaac_ros_cumotion/curobo_core/curobo/src/curobo/content/assets/robot/kinova/kinova_gen3_7dof.urdf"
-    yml_file_path: "/workspaces/cumotion/isaac_ros_cumotion/curobo_core/curobo/src/curobo/content/configs/robot/kinova_gen3.yml"
+    robot: 
+    urdf_path: '/workspaces/cumotion/isaac_ros_cumotion/franka_description/robots/fr3/fr3.urdf'
+    yml_file_path: '/workspaces/cumotion/isaac_ros_cumotion/franka_description/fr3.xrdf'
     time_dilation_factor: 0.5
     max_attempts: 10
     num_graph_seeds: 6
