@@ -115,43 +115,43 @@ geometry:
     spheres:
       fr3_link1:
         - center: [ 0.000, -0.029, -0.040 ]
-          radius: 0.0644
+          radius: 0.075
         - center: [ 0.001, -0.012, -0.130 ]
-          radius: 0.0644
+          radius: 0.075
         - center: [ 0.000, -0.073,  0.000 ]
-          radius: 0.0618
+          radius: 0.09
       fr3_link2:
         - center: [ 0.000, -0.002,  0.057 ]
-          radius: 0.0694
+          radius: 0.075
         - center: [ 0.001, -0.135,  0.006 ]
-          radius: 0.0656
+          radius: 0.075
         - center: [ 0.001, -0.031,  0.051 ]
-          radius: 0.0643
+          radius: 0.09
       fr3_link3:
         - center: [ 0.045,  0.026, -0.039 ]
-          radius: 0.0730
+          radius: 0.075
         - center: [ 0.082,  0.046,  0.000 ]
-          radius: 0.0682
+          radius: 0.075
         - center: [-0.002,  0.001, -0.072 ]
-          radius: 0.0640
+          radius: 0.075
       fr3_link4:
         - center: [-0.033,  0.034,  0.030 ]
-          radius: 0.0734
+          radius: 0.075
         - center: [-0.082,  0.072,  0.000 ]
-          radius: 0.0655
+          radius: 0.075
         - center: [ 0.000,  0.000,  0.054 ]
-          radius: 0.0673
+          radius: 0.075
       fr3_link5:
         - center: [ 0.000,  0.069,  0.000 ]
-          radius: 0.0594
+          radius: 0.065
         - center: [ 0.001,  0.019, -0.210 ]
-          radius: 0.0572
+          radius: 0.065
         - center: [-0.003, -0.010, -0.219 ]
-          radius: 0.0513
+          radius: 0.065
         - center: [-0.005,  0.056, -0.180 ]
-          radius: 0.0432
+          radius: 0.055
         - center: [ 0.001,  0.085,  0.006 ]
-          radius: 0.0565
+          radius: 0.065
         - center: [ 0.006,  0.087, -0.100 ]
           radius: 0.0299
         - center: [-0.004,  0.079, -0.138 ]
@@ -189,5 +189,5 @@ geometry:
         - center: [-0.044, -0.052,  0.139 ]
           radius: 0.0400
       fr3_hand: 
-        - center: [0.038, 0.009, 0.15]
-          radius: 0.1
+        - center: [0.038, 0.009, 0.16]
+          radius: 0.11
